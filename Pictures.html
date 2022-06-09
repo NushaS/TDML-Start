@@ -105,7 +105,7 @@
                     previewDefaultText.style.display = "none";
                     previewImage.style.display = "block";
 
-                    reader.addEventListener("load", funtion () {
+                    reader.addEventListener("load", function () {
                         console.log(this);
                         previewImage.setAttribute("src", this.result); 
                     });
