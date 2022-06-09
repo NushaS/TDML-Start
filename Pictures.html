@@ -82,58 +82,60 @@
   <!-- <head>
     <title>File Upload</title>
  </head> -->
- <body>
-    <form>
-       <input type = "file" name = "inpFile" id = "inpFile">
-       <div class = "image-preview" id = "imagePreview">
-            <img src= "" alt="Image Preview" class="image-preview__image">
-            <span class="image-preview__default-text">Image Preview</span>
-       </div>
 
-       <script>
-           const inpFile = document.getElementById("inpFile");
-           const previewContainer = document.getElementById("imagePreview");
-           const previewImage = previewContainer.querySelector(".image-preview__image");
-           const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+    <input type = "file" name = "inpFile" id = "inpFile">
+    <div class = "image-preview" id = "imagePreview">
+        <img src= "" alt="Image Preview" class="image-preview__image">
+        <span class="image-preview__default-text">Image Preview</span>
+    </div>
 
-           inpFile.addEventListener("change", function() {
-                const file = this.files[0];
+    <script>
+        const inpFile = document.getElementById("inpFile");
+        const previewContainer = document.getElementById("imagePreview");
+        const previewImage = previewContainer.querySelector(".image-preview__image");
+        const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
 
-                if (file) {
-                    const reader = new FileReader();
+        inpFile.addEventListener("change", function() {
+            const file = this.files[0];
 
-                    previewDefaultText.style.display = "none";
-                    previewImage.style.display = "block";
+            if (file) {
+                const reader = new FileReader();
 
-                    reader.addEventListener("load", function () {
-                        console.log(this);
-                        previewImage.setAttribute("src", this.result); 
-                    });
+                previewDefaultText.style.display = "none";
+                previewImage.style.display = "block";
 
-                    reader.readAsDataURL(file);
+                reader.addEventListener("load", function () {
+                    console.log(this);
+                    previewImage.setAttribute("src", this.result); 
+                });
+
+                reader.readAsDataURL(file);
 
                 }
            });
-        <script>
-    </form>
-/* </body>
+    </script>
 
-    <!-- <style>
-        body {
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiFigXCnm3bTmytpLw5H7h9t3i2wJ195JsGDTEi32lL9VpePzLi54Fk2VqxQbjSBULh_4:https://www.seriouseats.com/thmb/p1UTiC0PEeji0tXB-xvxcYc5j_A%3D/1500x1125/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2014__11__BakedOccasions_BirthdayCake-02af7038d93647d9a7339f0802b03079.jpg&usqp=CAU");
-         }
-    </style> -->
-    
-    <style>
-        body {
-            background-color: rgb(231, 138, 192);}
-    </style>
-</body> 
-
-    <style>
-        body {
-            background-color: rgb(231, 138, 192);}
-    </style>
-*/
+</body>
         
 </html>
+
+
+<!--</body>
+
+ <style>
+    body {
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiFigXCnm3bTmytpLw5H7h9t3i2wJ195JsGDTEi32lL9VpePzLi54Fk2VqxQbjSBULh_4:https://www.seriouseats.com/thmb/p1UTiC0PEeji0tXB-xvxcYc5j_A%3D/1500x1125/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2014__11__BakedOccasions_BirthdayCake-02af7038d93647d9a7339f0802b03079.jpg&usqp=CAU");
+     }
+</style> 
+
+<style>
+    body {
+        background-color: rgb(231, 138, 192);}
+</style>
+</body> 
+
+<style>
+    body {
+        background-color: rgb(231, 138, 192);}
+</style>
+-->
