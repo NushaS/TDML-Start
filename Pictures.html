@@ -12,7 +12,7 @@
             .image-preview {
                 width: 600px;
                 min-height: 200px;
-                border: 2p solid #cccccc;
+                border: 2p solid #dddddd;
                 margin-top: 15px;
 
                 /* Default text */
@@ -21,7 +21,7 @@
                 justify-content: center;
                 justify-content: center;
                 font-weight: bold;
-                color: #cccccc;
+                color: #dddddd;
             }
 
             .image-preview__image {
@@ -84,16 +84,10 @@
  </head> -->
 
     <input type = "file" name = "inpFile" id = "inpFile">
-    <div class="boxed">
-        <div class = "image-preview" id = "imagePreview">
-            <img src= "" alt="Image Preview" class="image-preview__image">
-            <span class="image-preview__default-text">Image Preview</span>
-        </div>
+    <div class = "image-preview" id = "imagePreview">
+        <img src= "" alt="Image Preview" class="image-preview__image">
+        <span class="image-preview__default-text">Image Preview</span>
     </div>
-
-    .boxed {
-        border: 1px solid green;
-    }
 
     <script>
         const inpFile = document.getElementById("inpFile");
