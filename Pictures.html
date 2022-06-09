@@ -81,6 +81,19 @@
             <img src= "" alt="Image Preview" class="image-preview__image">
             <span class="image-preview__default-text">Image Preview</span>
        </div>
+
+       <script>
+           const inpFile = document.getElementById("inpFile");
+           const previewContainer = document.getElementById("imagePreview");
+           const previewImage = previewContainer.querySelector(".image-preview__image");
+           const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+
+           inpFile.addEventListener("chage", function() {
+                const file = this.files[0];
+
+                console.log(file);
+           });
+        <script>
     </form>
  </body>
 
