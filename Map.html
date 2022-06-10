@@ -29,11 +29,13 @@
     <div class='wrapper'>
     <form id='nameForm'>
     <div class='form-uname'>
-        <label id='nameLable' for='nameField'>Insert Corrdinates:</label>
-        <input id='nameField' type='text' maxlength='25'></input>
+        <label id='latLable' for='latField'>Insert Latitude:</label>
+        <input id='latField' type='text' maxlength='25'></input>
+        <label id='lonLable' for='lonField'>Insert Longitude:</label>
+        <input id='lonField' type='text' maxlength='25'></input>
     </div>
     <div class='form-sub'>
-        <button id='subButton' type='button'>Print coordinates</button>
+        <button id='subButton' type='button'>Add Coordinates to Map!</button>
     </div>
     </form>
     
@@ -41,6 +43,24 @@
         <p id ='result'></p>
     </div>
     </div>
+
+    <script>
+        function initMap() {
+            var mapCoordinates = { lat: latField, lng: lonField};
+            const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 4,
+                    center: mapCoordinates,
+                }
+            );
+
+            var marker = new google.maps.Marker({
+                position: mapCoordinates,
+                map: map,
+            });
+        }
+
+        window.initMap = initMap;
+    </script>
     
     <style>
         body {
