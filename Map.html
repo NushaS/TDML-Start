@@ -35,7 +35,7 @@
         <input id='lonField' type='text' maxlength='25'></input>
     </div>
     <div class='form-sub'>
-        <button id='subButton' type='button'>Add Coordinates to Map!</button>
+        <button id='subButton' type='button'>Add Coordinates to Map</button>
     </div>
     </form>
     
@@ -44,7 +44,7 @@
     </div>
     </div>
 
-    <script>
+    <!--<script>
         function initMap() {
             var mapCoordinates = { lat: 'latField', lng: 'lonField'};
             const map = new google.maps.Map(document.getElementById("map"), {
@@ -54,6 +54,24 @@
             );
 
             var marker = new google.maps.Marker({
+                position: mapCoordinates,
+                map: map,
+            });
+        }
+
+        window.initMap = initMap;
+    </script> -->
+
+    <script>
+        function initMap() {
+            const uluru = { lat: -25.344, lng: 131.031};
+            const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 4,
+                    center: uluru,
+                }
+            );
+
+            const marker = new google.maps.Marker({
                 position: mapCoordinates,
                 map: map,
             });
