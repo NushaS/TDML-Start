@@ -23,9 +23,6 @@
         </tr>
     </table>
 
-    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d21521.153066216648!2d-122.170504!3d47.60388700000001!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1652369749342!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    -->
-
     <div class='wrapper'>
     <form id='nameForm'>
     <div class='form-uname'>
@@ -44,6 +41,8 @@
     </div>
     </div>
 
+    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d21521.153066216648!2d-122.170504!3d47.60388700000001!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1652369749342!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     <!--<script>
         function initMap() {
             var mapCoordinates = { lat: 'latField', lng: 'lonField'};
@@ -61,24 +60,6 @@
 
         window.initMap = initMap;
     </script> -->
-
-    <script>
-        function initMap() {
-            const uluru = { lat: -25.344, lng: 131.031};
-            const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 4,
-                    center: uluru,
-                }
-            );
-
-            const marker = new google.maps.Marker({
-                position: mapCoordinates,
-                map: map,
-            });
-        }
-
-        window.initMap = initMap;
-    </script>
     
     <style>
         body {
