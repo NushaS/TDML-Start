@@ -19,12 +19,21 @@
                map: map,
             });
          }
+
+         function showMemories() {
+            document.getElementById("demo").innerHTML = "At this coordinate";
+            document.getElementById("demo2").innerHTML = "You took this photo";
+         }
       </script>
-      
    </head>
    
    <body onload = "loadMap()">
       <div id = "sample" style = "width:580px; height:400px;"></div>
+      <div>
+         <button onClick = "showMemories()">Show Memories</button>
+         <p id = "demo"></p>
+         <p id = "demo2"></p>
+      </div>
    </body>
    
 </html>

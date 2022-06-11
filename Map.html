@@ -14,35 +14,38 @@
     </head>
 
 <body onload = "loadMap()">
-    <h1>Welcome to your Map</h1==>
-    <style>
-        title {text-align: center;}
-        h1 {text-align: center;}
-    </style>
+    <div style="background-color: rgb(235, 174, 209)">
+        <h1>Welcome to your Map</h1==>
 
-    <style>
-        #map {
-            height: 100%;
-        }
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+        <style>
+            title {text-align: center;}
+            h1 {text-align: center;}
+            div {text-align: center;}
+        </style>
 
-    <table style="width: 1270px;">
-        <tr>
+        <style>
+            #map {
+                height: 100%;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
 
-            <td> <a href ="Home.html">Home</a> </td>
-            <td> <a href = "Pictures.html"> Pictures</a></td>
-            <td> <a href = "Friends.html">Friends</a> </td>
-            <td> <a href = "Map.html"   style="color: rgb(18, 97, 216);">Map</a></td>
-            <td> <a href = "index.html">Sign Out</a> </td>
-
-
-        </tr>
-    </table>
+        <div style="background-color: rgb(235, 174, 209)">
+            <table style="width: 1270px;">
+                <tr>
+                    <td> <a href ="Home.html">Home</a> </td>
+                    <td> <a href = "Pictures.html"> Pictures</a></td>
+                    <td> <a href = "Friends.html">Friends</a> </td>
+                    <td> <a href = "Map.html"   style="color: rgb(18, 97, 216);">Map</a></td>
+                    <td> <a href = "index.html">Sign Out</a> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <div class='wrapper'>
     <form id='nameForm'>
@@ -57,6 +60,7 @@
         <button id='subButton2' type='button'>Print Longitude</button>
         <button id='subButton3' type='button'>Print Coordinates</button>
         <button id='subButton4' type='button'>Add Coordinates to Map</button>
+        <input type = "file" name = "inpFile" id = "inpFile">
     </div>
     </form>
     
@@ -76,7 +80,7 @@
             }
                 
             var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
-            
+            window.map=map;
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(47.60435, -122.17137),
                 map: map,
@@ -111,11 +115,12 @@
                 zoom:7
             }
                 
-            var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+            //var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
             
             var alatField = document.getElementById('latField').value;
             var alngField = document.getElementById('lngField').value;
 
+            map=window.map;
             var newMarker = new google.maps.Marker({
                 position: new google.maps.LatLng(alatField, alngField),
                 map: map,
