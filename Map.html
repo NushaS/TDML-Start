@@ -3,13 +3,17 @@
     <head>
         <title>Map</title>
         <style>
-            #map{
+            #sample{
                 height: 400px;
-                width: 100%;
+                width: 580px;
+                text-align: center;
             }
         </style>
+
+        <script src = "https://maps.googleapis.com/maps/api/js"></script>
     </head>
-<body>
+
+<body onload = "loadMap()">
     <h1>Welcome to your Map</h1==>
     <style>
         title {text-align: center;}
@@ -61,6 +65,25 @@
     </div>
     </div>
 
+    <div id = "sample" style = "width:580px; height:400px; text-align:center;"></div>
+
+    <script>
+        function loadMap() {
+            
+            var mapOptions = {
+                center:new google.maps.LatLng(19.373341, 78.662109),
+                zoom:7
+            }
+                
+            var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+            
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(17.088291, 78.442383),
+                map: map,
+            });
+        }
+    </script>
+
     <script>
         function getLatitude() {
             var latField = document.getElementById('latField').value;
@@ -68,6 +91,7 @@
 
             result.textContent = 'Your latitude is: ' + latField;
         }
+        
         function getLongitude() {
             var lngField = document.getElementById('lngField').value;
             var result = document.getElementById('result');
@@ -76,9 +100,23 @@
         }
 
         function getCoordinates() {
-            var coordinate = latField + ', ' + lngField;
+            var coordinate = document.getElementById('latField').value + ', ' + document.getElementById('lngField').value;
             
             result.textContent = 'Your coordinates are: ' + coordinate;
+        } 
+
+        function addCoordinates() {
+            var mapOptions = {
+                center:new google.maps.LatLng(19.373341, 78.662109),
+                zoom:7
+            }
+                
+            var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+            
+            var newMarker = new google.maps.newMarker({
+                position: new google.maps.LatLng(document.getElementById('latField').value, document.getElementById('lngField').value),
+                map: map,
+            });
         }
 
         var subButton = document.getElementById('subButton');
@@ -89,9 +127,12 @@
 
         var subButton3 = document.getElementById('subButton3');
         subButton3.addEventListener('click', getCoordinates, false);
+
+        var subButton4 = document.getElementById('subButton4');
+        subButton4.addEventListener('click', addCoordinates, false);
     </script>
 
-    <div id="map"></div>
+    <!--<div id="map"></div>
 
     <script>
         function initMap() {
@@ -106,11 +147,13 @@
     </script>
 
     <script async defer
+        src="https://maps.googleapis.com/maps/api/js">
+    </script>
+
+    <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1mKN_zkbupCZa9yG0K26nnlun5Ip7cns&callback=initMap">
     </script>
 
-
-    <!--
         <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d21521.153066216648!2d-122.170504!3d47.60388700000001!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1652369749342!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <script>
         function initMap() {
