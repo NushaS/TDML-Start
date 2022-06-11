@@ -62,13 +62,18 @@
         function getLatitude() {
             var latField = document.getElementById('latField').value;
             var result = document.getElementById('result');
+
+            result.textContent = 'Your latitude is: ' + latField;
         }
         function getLongitude() {
             var lngField = document.getElementById('lngField').value;
             var result = document.getElementById('result');
+
+            result.textContent = 'Your longitude is: ' + lngField;
         }
-        if(subButton == true) {
-            System.out.println(latField + " " + lngField);}
+
+        var subButton = document.getElementById('subButton');
+        subButton.addEventListener('click', getLatitude, false);
     </script>
 
     <div id="map"></div>
