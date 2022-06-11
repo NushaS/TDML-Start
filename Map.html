@@ -51,7 +51,8 @@
     <div class='form-sub'>
         <button id='subButton' type='button'>Print Latitude</button>
         <button id='subButton2' type='button'>Print Longitude</button>
-        <button id='subButton3' type='button'>Add Coordinates to Map</button>
+        <button id='subButton3' type='button'>Print Coordinates</button>
+        <button id='subButton4' type='button'>Add Coordinates to Map</button>
     </div>
     </form>
     
@@ -74,6 +75,12 @@
             result.textContent = 'Your longitude is: ' + lngField;
         }
 
+        function getCoordinates() {
+            var coordinate = latField + ', ' + lngField;
+            
+            result.textContent = 'Your coordinates are: ' + coordinate;
+        }
+
         var subButton = document.getElementById('subButton');
         subButton.addEventListener('click', getLatitude, false);
 
@@ -81,7 +88,7 @@
         subButton2.addEventListener('click', getLongitude, false);
 
         var subButton3 = document.getElementById('subButton3');
-        subButton3.addEventListener('click', getLatitude + getLongitude, false);
+        subButton3.addEventListener('click', getCoordinates, false);
     </script>
 
     <div id="map"></div>
