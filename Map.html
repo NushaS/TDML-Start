@@ -49,7 +49,9 @@
         <input id='lngField' type='text' maxlength='25'></input>
     </div>
     <div class='form-sub'>
-        <button id='subButton' type='button'>Add Coordinates to Map</button>
+        <button id='subButton' type='button'>Print Latitude</button>
+        <button id='subButton2' type='button'>Print Longitude</button>
+        <button id='subButton3' type='button'>Add Coordinates to Map</button>
     </div>
     </form>
     
@@ -73,7 +75,10 @@
         }
 
         var subButton = document.getElementById('subButton');
-        subButton.addEventListener('click', getLongitude, false);
+        subButton.addEventListener('click', getLatitude, false);
+
+        var subButton2 = document.getElementById('subButton2');
+        subButton2.addEventListener('click', getLongitude, false);
     </script>
 
     <div id="map"></div>
