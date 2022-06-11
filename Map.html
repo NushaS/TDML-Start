@@ -63,8 +63,8 @@
         }
     </script>
 
-    <script>
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap";
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
     </script>
 
     <script>
@@ -78,6 +78,82 @@
 
         window.initMap = initMap;
     </script>
+
+    <div id="map-canvas"></div>
+    <div class="controls">
+        <p>Zoom</p>
+        <i class="icon-plus-sign"></i> 
+        <i class="icon-minus-sign"></i>
+
+        <div class="pinWrapper">
+            <p>Drop your pin</p>
+            <img src="https://cdn0.iconfinder.com/data/icons/20-flat-icons/128/location-pointer.png">
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=geometry,visualization,drawing,places&sensor=false"></script>
+    <script>
+    $(document).ready(function() {
+    var mouseStartDrag=[0,0];
+    var newMarker;
+    var activePointPin = [47,128];  // = bottom center of the pin.  Change this value if the pin is changed
+
+    // jQuery-UI draggable
+    $('.pinWrapper img').draggable({
+        start: function(event) {
+        // this gives you the position of the mouse relative to the image.
+        mouseStartDrag = [event.offsetX, event.offsetY];    
+        },
+        stop: function(event) {
+        // we look at the mouse position, subtract it from the position of the map, so we get the mouse position over the map
+        var coordinatesOverDiv = [event.clientX - $('#map-canvas').position().left, event.clientY - $('#map-canvas').position().top];
+        // we don't want the mouse position, we want the position of the active point on the pin.
+        coordinatesOverDiv = [
+            coordinatesOverDiv[0] + activePointPin[0] - mouseStartDrag[0], 
+            coordinatesOverDiv[1] + activePointPin[1] - mouseStartDrag[1]
+        ];
+        // ask Google to get the position, corresponding to a pixel on the map
+        var pixelLatLng = overlay.getProjection().fromContainerPixelToLatLng( new google.maps.Point(coordinatesOverDiv[0], coordinatesOverDiv[1]) );
+        // set a new marker
+        newMarker = new google.maps.Marker({
+            map: map,
+            position: pixelLatLng
+        });
+        // set the pin back to its original position, @see http://stackoverflow.com/questions/15193640/jquery-ui-draggable-reset-to-original-pos
+        $(this).animate({
+            top: "0px",
+            left: "0px"
+        });
+
+        }
+    });
+    initialize();
+    });
+    var map;
+    var overlay;
+
+    // Google Maps
+    function initialize() {
+    var mapOptions = {
+        zoom: 8,
+        center: new google.maps.LatLng(50.5, 4.5),  // Over Belgium
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    // this overlay will be used to calculate mouse coordinates to Lat/Lng
+    overlay = new google.maps.OverlayView();
+    overlay.draw = function() {};
+    overlay.setMap(map);
+    }
+    </script>
+    <style>
+    #map-canvas {
+    height:400px;
+    }
+    </style>
 
 
     <!--
