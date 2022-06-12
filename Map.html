@@ -3,10 +3,47 @@
     <head>
         <title>Map</title>
         <style>
+            *{
+                box-sizing:border-box;
+            }
+
             #sample{
                 height: 400px;
                 width: 580px;
                 text-align: center;
+            }
+            
+            .column {
+                float: left;
+                width: 50%;
+                padding: 10px;
+                background-color: rgb(231, 138, 192)
+            }
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            .image-preview {
+                width: 600px;
+                min-height: 200px;
+                border: 2p solid #dddddd;
+                margin-top: 15px;
+
+                /* Default text */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                justify-content: center;
+                font-weight: bold;
+                color: #dddddd;
+            }
+
+            .image-preview__image {
+                display: none;
+                width: 100%;
             }
         </style>
 
@@ -69,7 +106,20 @@
     </div>
     </div>
 
-    <div id = "sample" style = "width:580px; height:400px; margin-left: auto; margin-right: auto;"></div>
+    <div class="row">
+        <div class="column">
+            <h2>Your Memories</h2>
+                <button onClick = "showMemories()">Show Memories</button>
+                <p id = "demo"></p>
+                <p id = "demo2"></p>
+                <p id = "demo3"></p>
+        </div>
+        <div class="column">
+            <h2>Your Map</h2>
+            <div id = "sample" style = "width:580px; height:400px; margin-left: auto; margin-right: auto;"></div>
+        </div>
+    </div>
+
 
     <script>
         function loadMap() {
@@ -114,8 +164,6 @@
                 center:new google.maps.LatLng(47.60435, -122.17137),
                 zoom:7
             }
-                
-            //var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
             
             var alatField = document.getElementById('latField').value;
             var alngField = document.getElementById('lngField').value;
@@ -129,6 +177,12 @@
             map.setCenter(new google.maps.LatLng(alatField, alngField));
         }
 
+        function showMemories() {
+            document.getElementById("demo").innerHTML = "At this coordinate:";
+            document.getElementById("demo2").innerHTML = "(" + document.getElementById('latField').value + ', ' + document.getElementById('lngField').value + ")";
+            document.getElementById("demo3").innerHTML = "You took this photo:";
+         }
+
         var subButton = document.getElementById('subButton');
         subButton.addEventListener('click', getLatitude, false);
 
@@ -141,6 +195,45 @@
         var subButton4 = document.getElementById('subButton4');
         subButton4.addEventListener('click', addCoordinates, false);
     </script>
+
+    <div class = "image-preview" id = "imagePreview">
+        <img src= "" alt="Image Preview" class="image-preview__image">
+        <span class="image-preview__default-text">Image Preview</span>
+    </div>
+
+    <script>
+        const inpFile = document.getElementById("inpFile");
+        const previewContainer = document.getElementById("imagePreview");
+        const previewImage = previewContainer.querySelector(".image-preview__image");
+        const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+
+        inpFile.addEventListener("change", function() {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                previewDefaultText.style.display = "none";
+                previewImage.style.display = "block";
+
+                reader.addEventListener("load", function () {
+                    console.log(this);
+                    previewImage.setAttribute("src", this.result); 
+                });
+
+                reader.readAsDataURL(file);
+
+                }
+        });
+    </script>
+    
+    <style>
+        body {
+            background-color: rgb(231, 138, 192);}
+    </style>
+    
+</html>
+
 
     <!--<div id="map"></div>
 
@@ -182,10 +275,3 @@
 
         window.initMap = initMap;
     </script> -->
-    
-    <style>
-        body {
-            background-color: rgb(231, 138, 192);}
-    </style>
-    
-</html>
