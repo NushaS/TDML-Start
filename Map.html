@@ -29,7 +29,7 @@
             .image-preview {
                 width: 600px;
                 min-height: 200px;
-                border: 2p solid #dddddd;
+                border: 2p solid rgb(231, 138, 192);
                 margin-top: 15px;
 
                 /* Default text */
@@ -38,7 +38,7 @@
                 justify-content: center;
                 justify-content: center;
                 font-weight: bold;
-                color: #dddddd;
+                color: rgb(231, 138, 192);
             }
 
             .image-preview__image {
@@ -113,6 +113,10 @@
                 <p id = "demo"></p>
                 <p id = "demo2"></p>
                 <p id = "demo3"></p>
+                <div class = "image-preview" id = "imagePreview">
+                    <img src= "" alt="Image Preview" class="image-preview__image">
+                    <span class="image-preview__default-text">Image Preview</span>
+                </div>
         </div>
         <div class="column">
             <h2>Your Map</h2>
@@ -196,11 +200,6 @@
         subButton4.addEventListener('click', addCoordinates, false);
     </script>
 
-    <div class = "image-preview" id = "imagePreview">
-        <img src= "" alt="Image Preview" class="image-preview__image">
-        <span class="image-preview__default-text">Image Preview</span>
-    </div>
-
     <script>
         const inpFile = document.getElementById("inpFile");
         const previewContainer = document.getElementById("imagePreview");
@@ -223,6 +222,9 @@
 
                 reader.readAsDataURL(file);
 
+                var image = new Image();
+                image.src = file;
+                document.getElementById("image_1").appendChild(image);
                 }
         });
     </script>
